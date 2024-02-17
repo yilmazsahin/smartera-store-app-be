@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+<form th:action="@{/login}" method="post">
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <label>User Type:</label>
+    <select name="authorizationLevel" th:field="*{authorizationLevel}" required>
+      <option th:value="ADMIN">Admin</option>
+      <option th:value="CUSTOMER">Customer</option>
+      <option th:value="GUEST">Guest</option>
+    </select>
+    <button (click)="login()" >Login</button>
+  </div>
+
+</form>
+
+</body>
+</html>
