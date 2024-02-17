@@ -37,10 +37,7 @@ public class SecurityConfig {
         http.exceptionHandling(c -> c.authenticationEntryPoint(
                         new HttpStatusEntryPoint(HttpStatus.ACCEPTED)))
                 .csrf(AbstractHttpConfigurer::disable)
-                .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(req -> req
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/api/customers/getAllCustomer**").hasAnyAuthority("ADMIN"));
+                .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
